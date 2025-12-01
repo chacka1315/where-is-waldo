@@ -16,4 +16,9 @@ export default defineConfig({
       '@siakablog/api': path.resolve(__dirname, '../../packages/api/src'),
     },
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/tests/setup.js',
+  },
 });
