@@ -1,0 +1,56 @@
+/* Spinners styles */
+.loader_circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  animation: spin 0.5s infinite linear;
+}
+
+.loader_circle svg {
+  stroke-width: 3px;
+}
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Buttons styles */
+.game-button {
+  width: fit-content;
+  height: fit-content;
+  padding: 6px 8px;
+  border-radius: 5px;
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Inputs styles */
+.labeled-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.labeled-input input {
+  height: 40px;
+  background-color: var(--input-bkg-color);
+  outline: none;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.labeled-input input:focus {
+  border-color: var(--highlight-color);
+}
+
+.input-error {
+  color: var(--color-red);
+  font-size: 14px;
+}
