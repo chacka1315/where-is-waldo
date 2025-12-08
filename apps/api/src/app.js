@@ -5,17 +5,27 @@ import morgan from 'morgan';
 import getCorsOptions from './config/cors.js';
 import { NotFoundError } from './errors/CustomErrors.js';
 import cors from 'cors';
+import sessionConfig from './config/session.js';
+import routes from './routes/index.js';
 
 const app = express();
 const corsConfig = getCorsOptions();
 
 //globals middlewares
+
 app.use(cors(corsConfig));
-app.use(express.urlencoded({ extended: true }));
+app.use(session(sessionConfig));
 app.use(express.json());
-app.use(morgan('dev'));
+morgan('combined', {
+  skip: (req, res) => {
+    return res.statusCode < 400;
+  },
+});
 
 //routing
+app.use('/api/round', routes.round);
+app.use('/api/characters', routes.character);
+app.use('/api/boards', routes.board);
 
 app.use((req, res) => {
   const error = new NotFoundError('This page does not exist.');

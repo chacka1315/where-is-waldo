@@ -4,15 +4,25 @@
   "description": "",
   "main": "src/app.js",
   "type": "module",
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/tests/jest.setup.js"
+    ]
+  },
   "scripts": {
     "dev": "dotenv -e .env -- node --watch src/app.js",
     "start": "node src/app.js",
-    "test": "dotenv -e .env.test -- jest",
     "build": "",
-    "db:migrate": "prisma migrate dev",
-    "db:deploy": "prisma migrate deploy",
-    "db:seed": "",
-    "db:studio": "prisma studio",
+    "test": "dotenv -e .env.test -- jest --verbose",
+    "db:migrate:dev": "dotenv -e .env -- prisma migrate dev",
+    "db:migrate:test": "dotenv -e .env.test -- prisma migrate deploy",
+    "db:migrate:prod": "prisma migrate deploy",
+    "db:seed:dev": "dotenv -e .env -- prisma db seed",
+    "db:seed:test": "dotenv -e .env.test -- node src/tests/test-seed.js",
+    "db:seed:prod": "prisma db seed",
+    "db:reset:dev": "dotenv -e .env -- prisma migrate reset",
+    "db:reset:test": "dotenv -e .env.test -- node src/tests/reset-test-db.js",
+    "db:studio": "dotenv -e .env -- prisma studio",
     "db:generate": "prisma generate"
   },
   "keywords": [],
@@ -21,20 +31,24 @@
   "packageManager": "pnpm@10.24.0",
   "dependencies": {
     "@prisma/adapter-pg": "^7.0.1",
-    "@prisma/client": "^7.0.1",
+    "@prisma/client": "^7.1.0",
+    "@prisma/client-runtime-utils": "^7.0.1",
+    "@quixo3/prisma-session-store": "^3.1.13",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "express-session": "^1.18.2",
     "express-validator": "^7.3.1",
     "morgan": "^1.10.1",
-    "pg": "^8.16.3",
-    "prisma": "^7.0.1"
+    "pg": "^8.16.3"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "babel-jest": "^30.2.0",
-    "dotenv-cli": "^11.0.0"
+    "dotenv-cli": "^11.0.0",
+    "jest": "^30.2.0",
+    "prisma": "^7.1.0",
+    "supertest": "^7.1.4"
   }
 }
