@@ -22,10 +22,7 @@ morgan('combined', {
     return res.statusCode < 400;
   },
 });
-app.use((req, res, next) => {
-  console.log('SESSION:', req.session);
-  next();
-});
+
 //routing
 app.use('/api/round', routes.round);
 app.use('/api/characters', routes.character);
