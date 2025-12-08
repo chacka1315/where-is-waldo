@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "dotenv -e .env -- node --watch src/app.js",
     "start": "node src/app.js",
-    "build": "",
+    "build": " pnpm -F api install && pnpm db:migrate:prod && pnpm db:generate",
     "test": "dotenv -e .env.test -- jest --verbose",
     "db:migrate:dev": "dotenv -e .env -- prisma migrate dev",
     "db:migrate:test": "dotenv -e .env.test -- prisma migrate deploy",
