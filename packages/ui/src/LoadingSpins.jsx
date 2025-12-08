@@ -1,4 +1,5 @@
 import { LoaderCircle as LoaderIcon } from 'lucide-react';
+import { PulseLoader } from 'react-spinners';
 import styles from './Styles.module.css';
 
 const LoadingSpinner = function () {
@@ -9,4 +10,4 @@ const LoadingSpinner = function () {
   );
 };
 
-export { LoadingSpinner };
+export { LoadingSpinner, PulseLoader };

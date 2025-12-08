@@ -10,7 +10,7 @@ export function LabeledInput({
   ...props
 }) {
   return (
-    <section className={`labeled-input ${className}`}>
+    <section className={`${styles['labeled-input']} ${className}`}>
       <label htmlFor={id}>{label}</label>
       <input id={id} type={type} value={value} {...props} />
       {children}
