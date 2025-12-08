@@ -9,13 +9,11 @@ import sessionConfig from './config/session.js';
 import routes from './routes/index.js';
 
 const app = express();
+app.set('trust proxy', 1);
+
 const corsConfig = getCorsOptions();
 
 //globals middlewares
-app.use((req, res, next) => {
-  console.log('SESSION:', req.session);
-  next();
-});
 app.use(cors(corsConfig));
 app.use(session(sessionConfig));
 app.use(express.json());
@@ -24,7 +22,10 @@ morgan('combined', {
     return res.statusCode < 400;
   },
 });
-
+app.use((req, res, next) => {
+  console.log('SESSION:', req.session);
+  next();
+});
 //routing
 app.use('/api/round', routes.round);
 app.use('/api/characters', routes.character);
