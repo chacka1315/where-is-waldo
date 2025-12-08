@@ -1,0 +1,15 @@
+import styles from './ErrorPage.module.css';
+import Title from '../../layout/Title';
+import { Link } from 'react-router';
+
+const ErrorPage = function () {
+  return (
+    <div className={styles.error_page}>
+      <Title>404</Title>
+      <h1>Hmm...this page doesn't exist.</h1>
+      <Link to="/">Back to home</Link>
+    </div>
+  );
+};
+
+export default ErrorPage;
