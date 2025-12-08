@@ -1,0 +1,262 @@
+.gameboard-page {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  position: relative;
+}
+
+.board {
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  background-color: var(--color-red);
+}
+
+.board-content {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  z-index: 1;
+}
+
+.board img {
+  max-height: 100vh;
+  cursor: crosshair;
+}
+
+.show-box {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  z-index: 4;
+}
+
+.hide-box {
+  display: none;
+}
+
+.target-box {
+  background-color: var(--color-white);
+  height: 200px;
+  width: 180px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: var(--shadow-on-white);
+}
+
+.target-box > p {
+  font-weight: 500;
+  font-size: 18px;
+  background-color: var(--color-blue);
+  border-radius: 5px 5px 0 0;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+  justify-content: space-between;
+}
+
+.target-box > p svg {
+  color: #fff;
+}
+.characters-to-find {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.characters-to-find > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transform: translateY(300%);
+}
+
+.error {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transform: translateY(200%);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.characters-to-find {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.characters-to-find > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.characters-to-find img {
+  width: 25px;
+  height: 25px;
+  min-width: 25px;
+}
+
+.box-characters {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-characters img {
+  width: 25px;
+  height: 25px;
+}
+
+.box-characters button {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  transition: transform 0.3s;
+}
+
+.box-characters button:hover {
+  background-color: rgb(25, 157, 228);
+  color: var(--color-white);
+}
+
+.box-characters button:active {
+  transform: scale(0.9);
+}
+
+.response-popup {
+  animation: pulse 0.3s infinite linear alternate;
+  border: 3px solid;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-on-white);
+  width: fit-content;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  z-index: 5;
+}
+
+@keyframes pulse {
+  from {
+    transform: translate(50%, 200%) scale(1);
+  }
+  to {
+    transform: translate(50%, 200%) scale(0.98);
+  }
+}
+
+.response-popup p {
+  color: var(--color-blue);
+  font-weight: 400;
+  font-size: 16px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.sub-backrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(25, 157, 228, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.sub-backrop form {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 15px;
+  gap: 10px;
+  box-shadow: var(--shadow-on-white);
+  position: relative;
+}
+
+.sub-backrop form > p {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.sub-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(0, -100%);
+  background: none;
+}
+
+.sub-close-btn svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+
+.sub-btn {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checked {
+  background-color: #fff;
+  border-radius: 2px;
+  color: #199de4;
+  box-shadow: var(--shadow-on-white);
+  animation: pop 0.3s ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: translate(50%, -50%) scale(0);
+  }
+  50% {
+    transform: translate(50%, -50%) scale(1.5);
+  }
+  100% {
+    transform: translate(50%, -50%) scale(1);
+  }
+}
+
+.checked:hover {
+  cursor: not-allowed;
+}
+
+@media (max-width: 1000px) {
+  .board {
+    height: calc(100vh - 50px);
+    width: 100vw;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .board img {
+    width: 100%;
+    height: min-content;
+  }
+
+  .sub-backrop form {
+    margin: 0 15px;
+  }
+}
