@@ -1,21 +1,22 @@
 import 'dotenv/config';
 import express from 'express';
-import session from 'express-session';
 import morgan from 'morgan';
 import getCorsOptions from './config/cors.js';
 import { NotFoundError } from './errors/CustomErrors.js';
 import cors from 'cors';
-import sessionConfig from './config/session.js';
 import routes from './routes/index.js';
+import sessionConfig from './config/session.js';
+import session from 'express-session';
 
 const app = express();
-app.set('trust proxy', 1);
 
+app.set('trust proxy', 1);
 const corsConfig = getCorsOptions();
 
 //globals middlewares
 app.use(cors(corsConfig));
 app.use(session(sessionConfig));
+// app.use(session(sessionConfig));
 app.use(express.json());
 morgan('combined', {
   skip: (req, res) => {
@@ -23,6 +24,10 @@ morgan('combined', {
   },
 });
 
+app.use((req, res, next) => {
+  console.log(req.session);
+  next();
+});
 //routing
 app.use('/api/round', routes.round);
 app.use('/api/characters', routes.character);

@@ -3,7 +3,7 @@ import prisma from '../prisma/prisma.js';
 
 const sessionStore = new PrismaSessionStore(prisma, {
   dbRecordIdIsSessionId: true,
-  checkPeriod: 1000 * 60 * 60 * 12, // 12 hours
+  checkPeriod: 1000 * 60 * 60, // 1 hour
 });
 
 const sessionConfig = {
@@ -13,9 +13,9 @@ const sessionConfig = {
   store: sessionStore,
 
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 1, // 1 day
+    maxAge: 1000 * 60 * 60 * 5, // 5 hours
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'none',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
   },
 };
 
