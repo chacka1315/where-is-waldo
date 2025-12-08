@@ -1,0 +1,154 @@
+header {
+  position: sticky;
+  top: 0;
+  background-color: rgb(255, 255, 255, 0.7);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  height: fit-content;
+  padding: 5px 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  width: 100%;
+}
+
+.header > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--color-blue);
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.logo a {
+  font-size: 2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+}
+
+.infos-btn {
+  background: none;
+}
+
+.links svg {
+  width: 25px;
+  height: 25px;
+  fill: var(--color-red);
+}
+
+@media (max-width: 500px) {
+  .header {
+    padding: 0 15px;
+  }
+
+  .logo img {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+  }
+
+  .logo a,
+  .infos-btn,
+  .links a {
+    font-size: 16px;
+  }
+
+  .header > div {
+    gap: 10px;
+  }
+
+  .links svg {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+  }
+
+  .game-name {
+    display: none;
+  }
+
+  .infos-btn > span,
+  .links a > span {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) and (min-width: 501px) {
+  .header {
+    padding: 0 10px;
+  }
+
+  .logo img {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+  }
+  .logo a,
+  .infos-btn,
+  .links a {
+    font-size: 16px;
+  }
+
+  .header > div {
+    gap: 10px;
+  }
+
+  .links svg {
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+  }
+
+  .game-name {
+    display: none;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .header {
+    padding: 0 20px;
+  }
+  .logo a {
+    font-size: 16px;
+  }
+}
+/* @keyframes toggle-btn {
+  from {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+
+
+@media (min-width: 1001px) {
+  .menu_toggle {
+    display: none;
+  }
+} */
