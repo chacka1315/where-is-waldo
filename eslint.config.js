@@ -12,6 +12,8 @@ export default defineConfig([
       'no-undef': 'warn',
       'no-var': 'error',
     },
-    languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
+    },
   },
 ]);
