@@ -24,10 +24,6 @@ morgan('combined', {
   },
 });
 
-app.use((req, res, next) => {
-  console.log(req.session);
-  next();
-});
 //routing
 app.use('/api/round', routes.round);
 app.use('/api/characters', routes.character);
