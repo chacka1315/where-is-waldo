@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "typeRoots" : ["./src/types", "./node_modules/@types"],
+    "module": "nodenext",
+    "target": "es2022",
+    "lib": ["es2022"],
+    "types": ["node"],
+    "noEmitOnError": true,
+
+    "strict": true,
+    "skipLibCheck": true,
+  },
+  "include": ["src"],
+  "exclude": ["tests"]
+}
+
