@@ -10,18 +10,20 @@
     ]
   },
   "scripts": {
-    "dev": "dotenv -e .env -- node --watch src/app.js",
-    "start": "node src/app.js",
-    "build": " pnpm -F api install && pnpm db:migrate:prod && pnpm db:generate",
+    "dev": "dotenv -e .env -- tsx watch src/app.ts",
+    "start": "node dist/app.js",
+    "build": "tsc ",
+    "install:deps":"pnpm -F api install",
+    "deploy-server": "rm -rf dist && pnpm build && pnpm db:migrate:prod && pnpm db:generate",
     "test": "dotenv -e .env.test -- jest --verbose",
     "db:migrate:dev": "dotenv -e .env -- prisma migrate dev",
     "db:migrate:test": "dotenv -e .env.test -- prisma migrate deploy",
     "db:migrate:prod": "prisma migrate deploy",
     "db:seed:dev": "dotenv -e .env -- prisma db seed",
-    "db:seed:test": "dotenv -e .env.test -- node src/tests/test-seed.js",
+    "db:seed:test": "dotenv -e .env.test -- node dist/tests/test-seed.js",
     "db:seed:prod": "prisma db seed",
     "db:reset:dev": "dotenv -e .env -- prisma migrate reset",
-    "db:reset:test": "dotenv -e .env.test -- node src/tests/reset-test-db.js",
+    "db:reset:test": "dotenv -e .env.test -- node dist/tests/reset-test-db.js",
     "db:studio": "dotenv -e .env -- prisma studio",
     "db:generate": "prisma generate"
   },
@@ -45,10 +47,19 @@
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/express-session": "^1.18.2",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.0.9",
+    "@types/pg": "^8.16.0",
+    "@types/supertest": "^6.0.3",
     "babel-jest": "^30.2.0",
     "dotenv-cli": "^11.0.0",
     "jest": "^30.2.0",
     "prisma": "^7.1.0",
-    "supertest": "^7.1.4"
+    "supertest": "^7.1.4",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }
